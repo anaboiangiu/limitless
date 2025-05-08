@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cupa Limitless 2025 - Echipa Noastră</title>
+  <title>Limitless Smart Learning - Echipa Noastră</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <nav>
     <ul>
-      <li><a href="index">Acasă</a></li>
+      <li><a href="acasa">Acasă</a></li>
       <li><a href="cursuri">Cursuri</a></li>
       <li><a href="concursuri">Concursuri</a></li>
       <li><a href="echipa">Echipa Noastră</a></li>
@@ -20,7 +20,7 @@
   <div class="container">
     <h1>Echipa Noastră</h1>
     <p>
-      Aici poți cunoaște echipa de organizare a Cupei Limitless 2025 și membrii noștri dedicați.
+      Cunoaște echipa Limitless care lucrează pentru a sprijini educația și competițiile matematice.
     </p>
   </div>
 </body>
