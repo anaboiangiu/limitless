@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cupa Limitless 2025 - Concursuri</title>
+  <title>Limitless Smart Learning - Concursuri</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <nav>
     <ul>
-      <li><a href="index.html">Acasă</a></li>
-      <li><a href="cursuri.html">Cursuri</a></li>
-      <li><a href="concursuri.html">Concursuri</a></li>
-      <li><a href="echipa.html">Echipa Noastră</a></li>
+      <li><a href="acasa">Acasă</a></li>
+      <li><a href="cursuri">Cursuri</a></li>
+      <li><a href="concursuri">Concursuri</a></li>
+      <li><a href="echipa">Echipa Noastră</a></li>
     </ul>
   </nav>
 
   <div class="container">
     <h1>Concursuri</h1>
     <p>
-      Aici vei găsi detalii despre concursurile viitoare și despre modul în care te poți înscrie.
+      Detalii despre concursurile organizate de Limitless și cum să te înscrii la ele.
     </p>
   </div>
 </body>
