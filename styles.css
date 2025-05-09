@@ -67,9 +67,8 @@ p {
     font-size: 16px;
   }
 }
-#amogus
-{
-    border-style: outset;
+#amogus{
+    border-style: ridge;
     border-width: 5px;
     border-color: rgb(255, 215, 0);
     border-radius: 10px;
