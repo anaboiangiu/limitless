@@ -42,6 +42,7 @@ nav img{
   content: '';
   width: 0%;
   height: 3px;
+  background-color: #130170;
   background: #aaf2f1;
   display: block;
   margins: auto;
