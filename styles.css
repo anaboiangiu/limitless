@@ -31,8 +31,9 @@ nav img{
 }
 
 .nav-links ul li a {
+  background-color: #130170;
   text-decoration: none;
-  color: #aaf2f1;
+  color: #f9fafb;
   font-weight: 600;
   font-size: 20px;
 }
