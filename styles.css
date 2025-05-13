@@ -7,16 +7,15 @@
   color: #1f2937;
 }
 
-nav{
-  align-content: center;
-  background-color: #130170;
-  padding: 16px;
-}
-
 nav img{
   width: 150px;
 }
 
+.nav-links{
+  align-content: center;
+  background-color: #130170;
+  padding: 16px;
+}
 .nav-links ul {
   list-style: none;
   display: flex;
@@ -26,7 +25,6 @@ nav img{
 }
 
 .nav-links ul li {
-  display: inline-block;
   padding: 8px 12px;
   position: relative;
 }
