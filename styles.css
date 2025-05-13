@@ -16,13 +16,19 @@ nav img{
   background-color: #130170;
   padding: 16px;
 }
+
 .nav-links ul {
+  background-color: #130170;
   list-style: none;
   display: flex;
   justify-content: center;
   margin: 0;
   padding: 0;
-} 
+}
+
+.nav-links ul li {
+  background-color: #130170;
+}
 
 .nav-links ul li a {
   text-decoration: none;
