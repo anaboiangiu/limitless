@@ -4,34 +4,50 @@ body {
   background-color: #f9fafb;
   color: #1f2937;
 }
-
-nav {
-  background-color: #130170;
-  padding: 16px;
-}
-
 nav ul {
   list-style: none;
-  display: flex;
-  justify-content: center;
-  margin: 0;
   padding: 0;
+  margin: 0;
+  display: flex;
+  background-color: #333;
 }
 
-nav li {
-  margin: 0 1.5rem;
+nav ul li {
+  position: relative;
 }
 
-nav a {
-  text-decoration: none;
+nav ul li a {
+  display: block;
+  padding: 10px 20px;
   color: white;
-  font-weight: 600;
-  font-size: 1.1rem;
-  transition: opacity 0.3s;
+  text-decoration: none;
 }
 
-nav a:hover {
-  opacity: 0.8;
+nav ul li a:hover {
+  background-color: #555;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #333;
+  min-width: 200px;
+  z-index: 1000;
+}
+
+.dropdown-content li a {
+  padding: 10px;
+  display: block;
+}
+
+.dropdown-content li a:hover {
+  background-color: #555;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 .container {
