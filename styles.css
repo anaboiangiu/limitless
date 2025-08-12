@@ -84,18 +84,12 @@ p {
     font-size: 16px;
   }
 }
-#amogus{
-    border-style: ridge;
-    border-width: 5px;
-    border-color: rgb(255, 215, 0);
-    border-radius: 10px;
-    padding: 5px;
-    font-size: 90%;
-}
+
 .centered
 {
     text-align: center;
 }
+
 .team-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -126,6 +120,8 @@ p {
 .team-member p {
   font-size: 0.9rem;
   color: #555;
+  text-align: center; /* force centering */
+  margin: 0 auto; /* centers if there's a fixed width */
 }
 
 .team-member:hover {
