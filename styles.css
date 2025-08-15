@@ -145,3 +145,28 @@ p {
   transform: translateY(-5px);
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
+
+.tag {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  color: white;
+  margin-top: 5px;
+}
+
+.matematica {
+  background-color: #e74c3c; /* red */
+}
+
+.informatica {
+  background-color: #3498db; /* blue */
+}
+
+.chimie {
+  background-color: #27ae60; /* green */
+}
+
+.fizica {
+  background-color: #f39c12; /* orange */
+}
