@@ -110,7 +110,6 @@ nav ul li a:hover {
   overflow: hidden;
   border-radius: 0;
   background-color: #0f172a;
-  transition: none;
 }
 
 .hero:hover {
