@@ -104,9 +104,9 @@ nav ul li a:hover {
 
  .hero {
   position: relative;
-  height: 60vh;          /* make sure hero has height */
+  width: 100%;
   overflow: hidden;
-  background-color: #0f172a; /* dark background for contrast */
+  background-color: #0f172a;
 }
 
 #heroParticles {
