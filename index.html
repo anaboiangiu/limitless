@@ -76,25 +76,22 @@
   if (!canvas) return;
   const ctx = canvas.getContext('2d', { alpha: true });
 
-  // Respect reduced motion
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let running = !prefersReduced;
-  let particles = [];
   const DPR = Math.min(window.devicePixelRatio || 1, 2);
 
-  // Config (tweak freely)
   const CONFIG = {
-    baseCount: 90,               // particles on desktop width
-    mobileCount: 45,             // particles on small screens
-    maxSpeed: 0.6,               // px per frame
-    radius: [1.2, 2.2],          // size range
-    linkDist: 110,               // distance to draw lines
-    linkOpacity: 0.15,           // line base opacity
-    mouseRepelRadius: 90,        // mouse push radius
-    bgFallback: 'rgba(15, 23, 42, 0.10)' // subtle fill if you want
+    baseCount: 90,
+    mobileCount: 45,
+    maxSpeed: 0.6,
+    radius: [1.2, 2.2],
+    linkDist: 110,
+    linkOpacity: 0.15,
+    mouseRepelRadius: 90
   };
 
+  let particles = [];
   const mouse = { x: null, y: null, active: false };
+
+  function rand(min, max) { return Math.random() * (max - min) + min; }
 
   function resize() {
     const rect = canvas.parentElement.getBoundingClientRect();
@@ -104,8 +101,6 @@
     canvas.style.height = rect.height + 'px';
     initParticles();
   }
-
-  function rand(min, max) { return Math.random() * (max - min) + min; }
 
   function initParticles() {
     const isMobile = canvas.width / DPR < 700;
@@ -120,16 +115,9 @@
   }
 
   function step() {
-    if (!running) return;
-
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    // Optional subtle backdrop tint for depth
-    // ctx.fillStyle = CONFIG.bgFallback;
-    // ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Move & draw particles
     for (const p of particles) {
-      // Mouse repel
       if (mouse.active && mouse.x !== null) {
         const dx = p.x - mouse.x * DPR;
         const dy = p.y - mouse.y * DPR;
@@ -144,7 +132,6 @@
       p.x += p.vx;
       p.y += p.vy;
 
-      // Wrap around edges
       if (p.x < -10) p.x = canvas.width + 10;
       if (p.x > canvas.width + 10) p.x = -10;
       if (p.y < -10) p.y = canvas.height + 10;
@@ -156,7 +143,6 @@
       ctx.fill();
     }
 
-    // Draw linking lines
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const a = particles[i], b = particles[j];
@@ -166,7 +152,7 @@
         if (dist < max) {
           const alpha = CONFIG.linkOpacity * (1 - dist / max);
           ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
-          ctx.lineWidth = DPR; // crisp on HiDPI
+          ctx.lineWidth = DPR;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
           ctx.lineTo(b.x, b.y);
@@ -178,15 +164,12 @@
     requestAnimationFrame(step);
   }
 
-  // Events
-  window.addEventListener('resize', resize);
   canvas.addEventListener('pointermove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; mouse.active = true; });
   canvas.addEventListener('pointerleave', () => { mouse.active = false; });
-
-  document.addEventListener('visibilitychange', () => { running = !prefersReduced && document.visibilityState === 'visible'; if (running) step(); });
+  window.addEventListener('resize', resize);
 
   resize();
-  if (running) requestAnimationFrame(step);
+  requestAnimationFrame(step);
 })();
 </script>
 
