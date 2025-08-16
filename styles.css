@@ -45,6 +45,10 @@ p {
   margin: 0.5rem 0;
 }
 
+ul, ol {
+  font-size: 1.2rem; /* adjust size as needed */
+}
+
 /* Navigation Menu */
 nav ul {
   list-style: none;
