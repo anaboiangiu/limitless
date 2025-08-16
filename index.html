@@ -31,6 +31,7 @@
 <main>
 
 <section id="hero" class="hero">
+    <canvas id="heroParticles" aria-hidden="true"></canvas>
     <div class="hero-content">
       <h1>Bun venit pe site-ul Limitless!</h1>
       <p>Cursuri gratuite la matematică, fizică, informatică și chimie. De la elevi, pentru elevi.</p>      
@@ -68,6 +69,126 @@
 </section>
   </div>
 </main>
+
+<script>
+(() => {
+  const canvas = document.getElementById('heroParticles');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d', { alpha: true });
+
+  // Respect reduced motion
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let running = !prefersReduced;
+  let particles = [];
+  const DPR = Math.min(window.devicePixelRatio || 1, 2);
+
+  // Config (tweak freely)
+  const CONFIG = {
+    baseCount: 90,               // particles on desktop width
+    mobileCount: 45,             // particles on small screens
+    maxSpeed: 0.6,               // px per frame
+    radius: [1.2, 2.2],          // size range
+    linkDist: 110,               // distance to draw lines
+    linkOpacity: 0.15,           // line base opacity
+    mouseRepelRadius: 90,        // mouse push radius
+    bgFallback: 'rgba(15, 23, 42, 0.10)' // subtle fill if you want
+  };
+
+  const mouse = { x: null, y: null, active: false };
+
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = Math.floor(rect.width * DPR);
+    canvas.height = Math.floor(rect.height * DPR);
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = rect.height + 'px';
+    initParticles();
+  }
+
+  function rand(min, max) { return Math.random() * (max - min) + min; }
+
+  function initParticles() {
+    const isMobile = canvas.width / DPR < 700;
+    const count = Math.floor((isMobile ? CONFIG.mobileCount : CONFIG.baseCount) * (canvas.width / (1200 * DPR)));
+    particles = Array.from({ length: Math.max(count, 25) }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * CONFIG.maxSpeed * DPR,
+      vy: (Math.random() - 0.5) * CONFIG.maxSpeed * DPR,
+      r: rand(CONFIG.radius[0], CONFIG.radius[1]) * DPR
+    }));
+  }
+
+  function step() {
+    if (!running) return;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Optional subtle backdrop tint for depth
+    // ctx.fillStyle = CONFIG.bgFallback;
+    // ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Move & draw particles
+    for (const p of particles) {
+      // Mouse repel
+      if (mouse.active && mouse.x !== null) {
+        const dx = p.x - mouse.x * DPR;
+        const dy = p.y - mouse.y * DPR;
+        const d = Math.hypot(dx, dy);
+        if (d < CONFIG.mouseRepelRadius * DPR && d > 0) {
+          const force = (CONFIG.mouseRepelRadius * DPR - d) / (CONFIG.mouseRepelRadius * DPR);
+          p.vx += (dx / d) * force * 0.6;
+          p.vy += (dy / d) * force * 0.6;
+        }
+      }
+
+      p.x += p.vx;
+      p.y += p.vy;
+
+      // Wrap around edges
+      if (p.x < -10) p.x = canvas.width + 10;
+      if (p.x > canvas.width + 10) p.x = -10;
+      if (p.y < -10) p.y = canvas.height + 10;
+      if (p.y > canvas.height + 10) p.y = -10;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,0.9)';
+      ctx.fill();
+    }
+
+    // Draw linking lines
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const a = particles[i], b = particles[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const dist = Math.hypot(dx, dy);
+        const max = CONFIG.linkDist * DPR;
+        if (dist < max) {
+          const alpha = CONFIG.linkOpacity * (1 - dist / max);
+          ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
+          ctx.lineWidth = DPR; // crisp on HiDPI
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  // Events
+  window.addEventListener('resize', resize);
+  canvas.addEventListener('pointermove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; mouse.active = true; });
+  canvas.addEventListener('pointerleave', () => { mouse.active = false; });
+
+  document.addEventListener('visibilitychange', () => { running = !prefersReduced && document.visibilityState === 'visible'; if (running) step(); });
+
+  resize();
+  if (running) requestAnimationFrame(step);
+})();
+</script>
 
 </body>
 </html>
