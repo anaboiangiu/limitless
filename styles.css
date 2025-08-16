@@ -102,16 +102,14 @@ nav ul li a:hover {
 
 /* ---------- Hero Section ---------- */
 
- .hero {
-  width: 100%;
-  margin: 0;
-  padding: 2rem;
-  border-radius: 0;
-  box-shadow: none;
-  transform: none;
-  transition: none;
+  .hero {
+  width: 100%;        
+  margin: 0;          
+  padding: 2rem 0;
   position: relative;
   overflow: hidden;
+  border-radius: 0;
+  background-color: #0f172a;
 }
 
 #heroParticles {
