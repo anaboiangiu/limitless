@@ -152,18 +152,12 @@ p {
   margin-top: 5px;
 }
 
-.matematica {
-  background-color: #e74c3c; /* red */
-}
+.matematica { background-color: #3498db; color: white; }
+.fizica { background-color: #2ecc71; color: white; }
+.chimie { background-color: #e67e22; color: white; }
+.informatica { background-color: #9b59b6; color: white; }
 
-.informatica {
-  background-color: #3498db; /* blue */
-}
-
-.chimie {
-  background-color: #27ae60; /* green */
-}
-
-.fizica {
-  background-color: #f39c12; /* orange */
+.clasa5, .clasa6, .clasa7, .clasa8, .clasa9 {
+  background-color: black;
+  color: white;
 }
