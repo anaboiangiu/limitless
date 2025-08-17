@@ -276,6 +276,13 @@ footer a:hover {
 }
 
 /* ---------- Responsive Styles ---------- */
+
+@media (max-width: 600px) {
+  .team-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 768px) {
   .hero {
     height: 300px;
@@ -308,19 +315,5 @@ footer a:hover {
 
   p {
     font-size: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    height: 250px;
-  }
-
-  .hero-content h1 {
-    font-size: 1.5rem;
-  }
-
-  .hero-content p {
-    font-size: 0.9rem;
   }
 }
