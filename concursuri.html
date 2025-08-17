@@ -12,15 +12,18 @@
 <body>
 
 <header>
-  <nav>
+  <nav class="site-nav">
     <div class="nav-header">
       <button class="nav-toggle" aria-label="Toggle menu">☰</button>
     </div>
+
     <ul class="nav-links">
       <li><a href="index.html">Acasă</a></li>
-      
+
       <li class="dropdown">
-        <button class="dropdown-toggle">Cursuri ▾</button>
+        <button class="submenu-toggle" aria-haspopup="true" aria-expanded="false">
+          Cursuri ▾
+        </button>
         <ul class="dropdown-content">
           <li><a href="cursuri-matematica.html">Matematică</a></li>
           <li><a href="cursuri-fizica.html">Fizică</a></li>
@@ -28,7 +31,7 @@
           <li><a href="cursuri-chimie.html">Chimie</a></li>
         </ul>
       </li>
-      
+
       <li><a href="concursuri.html">Concursuri</a></li>
       <li><a href="echipa.html">Echipa Noastră</a></li>
       <li><a href="https://www.youtube.com/@tesan3377">Înscriere</a></li>
@@ -69,17 +72,26 @@
 </main>
 
 <script>
-  document.querySelector(".nav-toggle").addEventListener("click", () => {
-    document.querySelector(".nav-links").classList.toggle("show");
+document.addEventListener("DOMContentLoaded", () => {
+  const navToggle = document.querySelector(".nav-toggle");
+  const navLinks = document.querySelector(".nav-links");
+
+  navToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
   });
 
-  // Toggle dropdowns on mobile
-  document.querySelectorAll(".dropdown-toggle").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const parent = btn.closest(".dropdown");
-      parent.classList.toggle("open");
+  // Dropdown toggle
+  const submenuToggles = document.querySelectorAll(".submenu-toggle");
+  submenuToggles.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const submenu = btn.nextElementSibling;
+      const expanded = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", !expanded);
+      submenu.classList.toggle("show");
     });
   });
+});
 </script>
 
 </body>
