@@ -1,7 +1,7 @@
 /* ---------- Base Styles ---------- */
 body {
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 1rem;       /* 16px default */
+  font-size: 1rem;
   line-height: 1.6;
   color: #222;
   margin: 0;
@@ -51,71 +51,135 @@ ul, ol {
 }
 
 /* ---------- Navigation Menu ---------- */
-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  background-color: #333;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-nav ul li {
+nav {
+  background: #333;
   position: relative;
+  z-index: 1000;
+  padding: 0.8rem 1rem;
 }
 
-nav ul li a {
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-toggle {
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: block;
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: none; /* hidden on mobile */
+  flex-direction: column;
+  gap: 0;
+  background: #333;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  padding: 1rem 0;
+  border-top: 1px solid #444;
+}
+
+.nav-links.show {
+  display: flex;
+}
+
+.nav-links a,
+.dropdown-toggle {
   display: block;
   padding: 10px 20px;
   color: white;
   text-decoration: none;
+  font-weight: 600;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
 }
 
-nav ul li a:hover {
+.nav-links a:hover,
+.dropdown-toggle:hover {
   background-color: #555;
 }
 
 /* ---------- Dropdown Menu ---------- */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #333;
-  min-width: 200px;
-  z-index: 1000;
+.dropdown {
+  position: relative;
 }
 
-.dropdown-content li a {
-  padding: 10px;
+.dropdown-content {
+  display: none;
+  flex-direction: column;
+  background: #333;
+  border-top: 1px solid #444;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.dropdown-content a {
+  padding: 10px 20px;
+  color: white;
   display: block;
 }
 
-.dropdown-content li a:hover {
+.dropdown-content a:hover {
   background-color: #555;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
+/* Show dropdown when toggled */
+.dropdown.open .dropdown-content {
+  display: flex;
+}
+
+/* ---------- Desktop Nav Styles ---------- */
+@media (min-width: 768px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex !important;
+    flex-direction: row;
+    gap: 15px;
+    background: none;
+    position: static;
+    padding: 0;
+    border: none;
+  }
+
+  .dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    display: none;
+    margin-top: 0;
+    border: none;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
 }
 
 /* ---------- Hero Section ---------- */
-
 .hero {
-  width: 100%;        
-  margin: 0;          
+  width: 100%;
+  margin: 0;
   padding: 2rem 0;
   position: relative;
   overflow: hidden;
   border-radius: 0;
   background-color: #0f172a;
-}
-
-.hero:hover {
-  transform: none;
-  box-shadow: none;
 }
 
 #heroParticles {
@@ -238,7 +302,6 @@ section:hover {
 .fizica { background-color: #2ecc71; }
 .chimie { background-color: #e67e22; }
 .informatica { background-color: #9b59b6; }
-
 .clasa5, .clasa6, .clasa7, .clasa8, .clasa9 {
   background-color: black;
 }
@@ -262,11 +325,10 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* ---------- Responsive Styles ---------- */
-
+/* ---------- Responsive Typography ---------- */
 @media (max-width: 768px) {
   body {
-    font-size: 1.05rem; /* slightly bigger on small screens */
+    font-size: 1.05rem;
     line-height: 1.7;
   }
 
@@ -280,14 +342,14 @@ footer a:hover {
 
   p,
   li {
-    font-size: 1.05rem; /* paragraphs = list items */
+    font-size: 1.05rem;
   }
 }
 
 @media (max-width: 768px) {
   .hero {
     height: 300px;
-    margin: 10px;
+    margin: 0;
   }
 
   .hero-content h1 {
@@ -300,15 +362,6 @@ footer a:hover {
 }
 
 @media (max-width: 600px) {
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  nav ul li {
-    margin: 5px 0;
-  }
-
   .container {
     padding: 1rem;
     margin: 1rem;
