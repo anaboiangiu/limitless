@@ -1,7 +1,7 @@
 /* ---------- Base Styles ---------- */
 body {
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 1rem; /* 16px */
+  font-size: 1rem;       /* 16px default */
   line-height: 1.6;
   color: #222;
   margin: 0;
@@ -53,14 +53,6 @@ ul, ol {
 /* ---------- Navigation Menu ---------- */
 .site-nav {
   background-color: #333;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  position: relative;
-}
-
-.nav-header {
-  display: none; /* mobile toggle will show it */
 }
 
 .nav-links {
@@ -68,70 +60,61 @@ ul, ol {
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 15px;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 10px;
 }
 
 .nav-links li {
   position: relative;
 }
 
-.nav-links a, .nav-links button {
-  display: block;
-  padding: 10px 20px;
-  color: white;
-  font-size: 1.2rem; /* consistent font */
-  text-decoration: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.nav-links a:hover, .nav-links button:hover {
-  background-color: #555;
-  border-radius: 5px;
-}
-
-/* ---------- Dropdown Menu ---------- */
-
-/* Make submenu button match menu links */
+.nav-links a,
 .submenu-toggle {
-  font-family: inherit;       
+  font-family: inherit;
   font-size: 1rem;
   color: white;
+  text-decoration: none;
+  display: block;
+  padding: 10px 20px;
+  text-align: center;
   background: none;
   border: none;
-  padding: 10px 20px;
   cursor: pointer;
-  text-align: center;
 }
 
+.nav-links a:hover,
 .submenu-toggle:hover {
   background-color: #555;
 }
 
+/* ---------- Dropdown Menu ---------- */
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 100%;
-  left: 0;
+  top: 100%;      /* directly below the parent */
+  left: 0;        /* align with left edge of parent li */
   background-color: #333;
-  min-width: 200px;
+  min-width: 180px;
+  text-align: left;
   z-index: 1000;
+  margin: 0;
+  padding: 0;
+  border-radius: 5px;
 }
 
 .dropdown-content li a {
-  padding: 10px;
   display: block;
-  font-size: 1.2rem;
+  padding: 10px 20px;
+  color: white;
 }
 
 .dropdown-content li a:hover {
   background-color: #555;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content,
+.dropdown .submenu-toggle:focus + .dropdown-content {
   display: block;
 }
 
@@ -217,7 +200,7 @@ section:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
-  padding: 30px 1rem;
+  padding: 30px 0;
   max-width: 1200px;
   margin: auto;
 }
@@ -266,10 +249,7 @@ section:hover {
 .fizica { background-color: #2ecc71; }
 .chimie { background-color: #e67e22; }
 .informatica { background-color: #9b59b6; }
-
-.clasa5, .clasa6, .clasa7, .clasa8, .clasa9 {
-  background-color: black;
-}
+.clasa5, .clasa6, .clasa7, .clasa8, .clasa9 { background-color: black; }
 
 /* ---------- Footer ---------- */
 footer {
@@ -297,68 +277,36 @@ footer a:hover {
     line-height: 1.7;
   }
 
-  h1 {
-    font-size: 1.8rem;
-  }
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.4rem; }
 
-  h2 {
-    font-size: 1.4rem;
-  }
+  p, li { font-size: 1.05rem; }
 
-  p, li {
-    font-size: 1.05rem;
-  }
+  .hero { height: 300px; margin: 10px; }
+  .hero-content h1 { font-size: 2rem; }
+  .hero-content p { font-size: 1rem; }
+}
 
-  .hero {
-    height: 300px;
-    margin: 10px;
-  }
-
-  .hero-content h1 {
-    font-size: 2rem;
-  }
-
-  .hero-content p {
-    font-size: 1rem;
-  }
-
-  /* Mobile nav */
-  .nav-header {
-    display: block;
-  }
-
+@media (max-width: 600px) {
   .nav-links {
     flex-direction: column;
-    display: none;
-    width: 100%;
-    text-align: center;
-  }
-
-  .nav-links.active {
-    display: flex;
+    align-items: center;
   }
 
   .nav-links li {
     margin: 5px 0;
   }
 
-  .team-gallery {
-    grid-template-columns: 1fr;
-    gap: 15px;
-    padding: 20px 1rem;
+  .container {
+    padding: 1rem;
+    margin: 1rem;
   }
+
+  p { font-size: 1rem; }
 }
 
 @media (max-width: 480px) {
-  .hero {
-    height: 250px;
-  }
-
-  .hero-content h1 {
-    font-size: 1.5rem;
-  }
-
-  .hero-content p {
-    font-size: 0.9rem;
-  }
+  .hero { height: 250px; }
+  .hero-content h1 { font-size: 1.5rem; }
+  .hero-content p { font-size: 0.9rem; }
 }
