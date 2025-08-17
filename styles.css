@@ -195,15 +195,19 @@ section:hover {
   align-items: stretch;
 }
 
-.team-member {
+.team-member .tags {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  background-color: #f5f5f5;
-  border-radius: 10px;
-  text-align: center;
-  padding: 15px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-wrap: wrap;
+  justify-content: center; /* or flex-start if you want left alignment */
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.tag {
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  color: white;
 }
 
 .team-member p {
