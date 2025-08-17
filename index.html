@@ -77,14 +77,25 @@
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
 
-  const CONFIG = {
-    count: 80,
-    maxSpeed: 0.5,
-    radius: [1.2, 2.2],
-    linkDist: 120,
-    linkOpacity: 0.15,
-    mouseRepelRadius: 90,
+  let CONFIG = {
+  count: 80,
+  maxSpeed: 0.5,
+  radius: [1.2, 2.2],
+  linkDist: 120,
+  linkOpacity: 0.15,
+  mouseRepelRadius: 90,
+};
+
+if (window.innerWidth < 768) {
+  CONFIG = {
+    count: 35,
+    maxSpeed: 0.3,
+    radius: [1.5, 2.5],
+    linkDist: 80,        
+    linkOpacity: 0.12,
+    mouseRepelRadius: 70,
   };
+}
 
   let particles = [];
   const mouse = { x: null, y: null, active: false };
