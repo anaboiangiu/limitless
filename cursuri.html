@@ -12,14 +12,11 @@
 <body>
 
 <header>
-  <nav class="site-nav">
-    <div class="nav-header">
-      <button class="nav-toggle" aria-label="Toggle menu">☰</button>
-    </div>
-    <ul class="nav-links">
+  <nav>
+    <ul>
       <li><a href="index.html">Acasă</a></li>
       <li class="dropdown">
-        <button class="submenu-toggle">Cursuri</button>
+        <a href="cursuri.html">Cursuri</a>
         <ul class="dropdown-content">
           <li><a href="cursuri-matematica.html">Matematică</a></li>
           <li><a href="cursuri-fizica.html">Fizică</a></li>
@@ -42,33 +39,5 @@
   </div>
 </main>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  // Mobile menu toggle
-  const navToggle = document.querySelector('.nav-toggle');
-  const navLinks = document.querySelector('.nav-links');
-
-  navToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
-
-  // Submenu toggle for Cursuri
-  const submenuToggle = document.querySelector('.submenu-toggle');
-  const dropdown = submenuToggle.nextElementSibling;
-
-  submenuToggle.addEventListener('click', (e) => {
-    e.preventDefault();
-    dropdown.classList.toggle('active');
-  });
-
-  // Optional: close dropdown if clicking outside
-  document.addEventListener('click', (e) => {
-    if (!submenuToggle.contains(e.target) && !dropdown.contains(e.target)) {
-      dropdown.classList.remove('active');
-    }
-  });
-});
-</script>
-  
 </body>
 </html>
