@@ -1,11 +1,10 @@
 /* ---------- Base Styles ---------- */
 body {
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 1rem;       /* 16px default */
-  line-height: 1.6;
-  color: #222;
   margin: 0;
-  padding: 0;
+  background-color: #f9fafb;
+  color: #1f2937;
+  line-height: 1.6;
 }
 
 .container {
@@ -41,7 +40,7 @@ h2 {
 }
 
 /* ---------- Paragraphs ---------- */
-p, li {
+p {
   font-size: 1.2rem;
   margin: 0.5rem 0;
 }
@@ -51,40 +50,29 @@ ul, ol {
 }
 
 /* ---------- Navigation Menu ---------- */
-.site-nav {
-  background-color: #333;
-}
-
-.nav-links {
+nav ul {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   justify-content: center;
+  background-color: #333;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px;
 }
 
-.nav-links li {
+nav ul li {
   position: relative;
 }
 
-.nav-links a,
-.submenu-toggle {
-  font-family: inherit;
-  font-size: 1rem;
-  color: white;
-  text-decoration: none;
+nav ul li a {
   display: block;
   padding: 10px 20px;
-  text-align: center;
-  background: none;
-  border: none;
-  cursor: pointer;
+  color: white;
+  text-decoration: none;
 }
 
-.nav-links a:hover,
-.submenu-toggle:hover {
+nav ul li a:hover {
   background-color: #555;
 }
 
@@ -92,41 +80,41 @@ ul, ol {
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 100%;      /* directly below the parent */
-  left: 0;        /* align with left edge of parent li */
+  top: 100%;
+  left: 0;
   background-color: #333;
-  min-width: 180px;
-  text-align: left;
+  min-width: 200px;
   z-index: 1000;
-  margin: 0;
-  padding: 0;
-  border-radius: 5px;
 }
 
 .dropdown-content li a {
+  padding: 10px;
   display: block;
-  padding: 10px 20px;
-  color: white;
 }
 
 .dropdown-content li a:hover {
   background-color: #555;
 }
 
-.dropdown:hover .dropdown-content,
-.dropdown .submenu-toggle:focus + .dropdown-content {
+.dropdown:hover .dropdown-content {
   display: block;
 }
 
 /* ---------- Hero Section ---------- */
+
 .hero {
-  width: 100%;
-  margin: 0;
+  width: 100%;        
+  margin: 0;          
   padding: 2rem 0;
   position: relative;
   overflow: hidden;
   border-radius: 0;
   background-color: #0f172a;
+}
+
+.hero:hover {
+  transform: none;
+  box-shadow: none;
 }
 
 #heroParticles {
@@ -249,7 +237,10 @@ section:hover {
 .fizica { background-color: #2ecc71; }
 .chimie { background-color: #e67e22; }
 .informatica { background-color: #9b59b6; }
-.clasa5, .clasa6, .clasa7, .clasa8, .clasa9 { background-color: black; }
+
+.clasa5, .clasa6, .clasa7, .clasa8, .clasa9 {
+  background-color: black;
+}
 
 /* ---------- Footer ---------- */
 footer {
@@ -272,28 +263,27 @@ footer a:hover {
 
 /* ---------- Responsive Styles ---------- */
 @media (max-width: 768px) {
-  body {
-    font-size: 1.05rem;
-    line-height: 1.7;
+  .hero {
+    height: 300px;
+    margin: 10px;
   }
 
-  h1 { font-size: 1.8rem; }
-  h2 { font-size: 1.4rem; }
+  .hero-content h1 {
+    font-size: 2rem;
+  }
 
-  p, li { font-size: 1.05rem; }
-
-  .hero { height: 300px; margin: 10px; }
-  .hero-content h1 { font-size: 2rem; }
-  .hero-content p { font-size: 1rem; }
+  .hero-content p {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 600px) {
-  .nav-links {
+  nav ul {
     flex-direction: column;
     align-items: center;
   }
 
-  .nav-links li {
+  nav ul li {
     margin: 5px 0;
   }
 
@@ -302,11 +292,21 @@ footer a:hover {
     margin: 1rem;
   }
 
-  p { font-size: 1rem; }
+  p {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 480px) {
-  .hero { height: 250px; }
-  .hero-content h1 { font-size: 1.5rem; }
-  .hero-content p { font-size: 0.9rem; }
+  .hero {
+    height: 250px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-content p {
+    font-size: 0.9rem;
+  }
 }
