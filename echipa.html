@@ -16,14 +16,10 @@
     <div class="nav-header">
       <button class="nav-toggle" aria-label="Toggle menu">☰</button>
     </div>
-
     <ul class="nav-links">
       <li><a href="index.html">Acasă</a></li>
-
       <li class="dropdown">
-        <button class="submenu-toggle" aria-haspopup="true" aria-expanded="false">
-          Cursuri ▾
-        </button>
+        <button class="submenu-toggle">Cursuri</button>
         <ul class="dropdown-content">
           <li><a href="cursuri-matematica.html">Matematică</a></li>
           <li><a href="cursuri-fizica.html">Fizică</a></li>
@@ -31,7 +27,6 @@
           <li><a href="cursuri-chimie.html">Chimie</a></li>
         </ul>
       </li>
-
       <li><a href="concursuri.html">Concursuri</a></li>
       <li><a href="echipa.html">Echipa Noastră</a></li>
       <li><a href="https://www.youtube.com/@tesan3377">Înscriere</a></li>
@@ -104,27 +99,32 @@
 </main>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const navToggle = document.querySelector(".nav-toggle");
-  const navLinks = document.querySelector(".nav-links");
+document.addEventListener('DOMContentLoaded', () => {
+  // Mobile menu toggle
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
 
-  navToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
   });
 
-  // Dropdown toggle
-  const submenuToggles = document.querySelectorAll(".submenu-toggle");
-  submenuToggles.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      const submenu = btn.nextElementSibling;
-      const expanded = btn.getAttribute("aria-expanded") === "true";
-      btn.setAttribute("aria-expanded", !expanded);
-      submenu.classList.toggle("show");
-    });
+  // Submenu toggle for Cursuri
+  const submenuToggle = document.querySelector('.submenu-toggle');
+  const dropdown = submenuToggle.nextElementSibling;
+
+  submenuToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    dropdown.classList.toggle('active');
+  });
+
+  // Optional: close dropdown if clicking outside
+  document.addEventListener('click', (e) => {
+    if (!submenuToggle.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.classList.remove('active');
+    }
   });
 });
-  </script>
+</script>
   
 </body>
 </html>
