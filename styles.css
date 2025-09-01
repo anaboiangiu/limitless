@@ -109,21 +109,12 @@ nav ul li a:hover {
   position: relative;
   overflow: hidden;
   border-radius: 0;
-  background-color: #0f172a;
+  background-color: #00348f;
 }
 
 .hero:hover {
   transform: none;
   box-shadow: none;
-}
-
-#heroParticles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
 }
 
 .hero-content {
