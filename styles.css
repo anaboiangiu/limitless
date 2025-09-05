@@ -82,7 +82,7 @@ nav ul li a:hover {
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #c4003b;
+  background-color: #f5004a;
   min-width: 200px;
   z-index: 1000;
 }
@@ -93,7 +93,7 @@ nav ul li a:hover {
 }
 
 .dropdown-content li a:hover {
-  background-color: #a00030;
+  background-color: #c4003b;
 }
 
 .dropdown:hover .dropdown-content {
