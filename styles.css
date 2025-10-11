@@ -312,3 +312,80 @@ footer a:hover {
     font-size: 1rem;
   }
 }
+
+.feedback-section {
+  background: #ffffff;
+  padding: 60px 20px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.feedback-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #007bff;
+  margin-bottom: 40px;
+}
+
+.feedback-reel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.feedback-track {
+  display: flex;
+  gap: 20px;
+  animation: scroll 25s linear infinite;
+}
+
+.feedback-card {
+  flex: 0 0 300px;
+  background: #f9fbff;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.1);
+  padding: 20px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feedback-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0, 123, 255, 0.15);
+}
+
+.feedback-text {
+  font-size: 1rem;
+  color: #333;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.feedback-author {
+  font-size: 0.9rem;
+  color: #007bff;
+  font-weight: 500;
+}
+
+/* Animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause scrolling when hovering */
+.feedback-track:hover {
+  animation-play-state: paused;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .feedback-card {
+    flex: 0 0 250px;
+  }
+}
+
