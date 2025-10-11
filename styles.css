@@ -315,16 +315,16 @@ footer a:hover {
 
 .feedback-section {
   background: #ffffff;
-  padding: 60px 20px;
-  overflow: hidden;
+  padding: 70px 20px;
   text-align: center;
+  overflow: hidden;
 }
 
 .feedback-title {
   font-size: 2rem;
   font-weight: 600;
   color: #007bff;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .feedback-reel {
@@ -335,39 +335,42 @@ footer a:hover {
 
 .feedback-track {
   display: flex;
-  gap: 20px;
-  animation: scroll 25s linear infinite;
+  gap: 30px;
+  animation: scroll 60s linear infinite;
 }
 
 .feedback-card {
-  flex: 0 0 300px;
+  flex: 0 0 400px;
   background: #f9fbff;
-  border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.1);
-  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.1);
+  padding: 25px 30px;
   text-align: left;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  line-height: 1.6;
 }
 
 .feedback-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 14px rgba(0, 123, 255, 0.15);
+  transform: scale(1.03);
+  box-shadow: 0 8px 18px rgba(0, 123, 255, 0.15);
 }
 
 .feedback-text {
   font-size: 1rem;
   color: #333;
-  font-style: italic;
-  margin-bottom: 10px;
+  white-space: normal;
+  font-style: normal;
 }
 
 .feedback-author {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: #007bff;
   font-weight: 500;
+  margin-top: 15px;
+  text-align: right;
 }
 
-/* Animation */
+/* Slower, smoother scroll for long text */
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -382,10 +385,11 @@ footer a:hover {
   animation-play-state: paused;
 }
 
-/* Responsive */
+/* Responsive design */
 @media (max-width: 768px) {
   .feedback-card {
-    flex: 0 0 250px;
+    flex: 0 0 300px;
+    padding: 20px;
   }
 }
 
