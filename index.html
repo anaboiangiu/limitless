@@ -38,10 +38,11 @@
     </div>
 </section>
 
-  <section class="feedback-section">
+ <section class="feedback-section">
   <h2 class="feedback-title">Ce spun elevii noștri</h2>
 
-  <div class="feedback-reel">
+  <!-- Scrollable feedback reel -->
+  <div class="feedback-reel" id="feedbackReel">
     <div class="feedback-track">
 
       <div class="feedback-card">
@@ -120,6 +121,29 @@
         </p>
         <div class="feedback-author">— Eduard Florin Ștefan, clasa a VI-a</div>
       </div>
+
+    </div>
+  </div>
+
+  <!-- Navigation arrows -->
+  <button class="feedback-nav left" id="leftArrow">&#10094;</button>
+  <button class="feedback-nav right" id="rightArrow">&#10095;</button>
+</section>
+
+<!-- Scroll Buttons Script -->
+<script>
+  const reel = document.getElementById('feedbackReel');
+  const leftBtn = document.getElementById('leftArrow');
+  const rightBtn = document.getElementById('rightArrow');
+
+  rightBtn.addEventListener('click', () => {
+    reel.scrollBy({ left: 400, behavior: 'smooth' });
+  });
+
+  leftBtn.addEventListener('click', () => {
+    reel.scrollBy({ left: -400, behavior: 'smooth' });
+  });
+</script>
 
     </div>
   </div>
