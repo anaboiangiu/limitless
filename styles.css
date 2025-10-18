@@ -313,8 +313,9 @@ footer a:hover {
   }
 }
 
+/* ---------- Feedback Section ---------- */
 .feedback-section {
-  background: #ffffff;
+  background-color: #ffffff;
   padding: 70px 20px;
   text-align: center;
   overflow: hidden;
@@ -322,28 +323,38 @@ footer a:hover {
 
 .feedback-title {
   font-size: 2rem;
-  font-weight: 600;
-  color: #00348f;
+  font-weight: 700;
+  color: #00348f; /* Limitless dark blue */
   margin-bottom: 50px;
 }
 
+/* Scrollable reel container */
 .feedback-reel {
   position: relative;
-  overflow: hidden;
   width: 100%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
 }
 
+.feedback-reel::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+/* Track that holds the cards */
 .feedback-track {
   display: flex;
   gap: 30px;
-  animation: scroll 60s linear infinite;
+  padding: 0 20px;
 }
 
+/* Each feedback card */
 .feedback-card {
   flex: 0 0 400px;
   background: #f9fbff;
   border-radius: 18px;
-  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 52, 143, 0.1);
   padding: 25px 30px;
   text-align: left;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -351,45 +362,65 @@ footer a:hover {
 }
 
 .feedback-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 8px 18px rgba(0, 123, 255, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 52, 143, 0.15);
 }
 
+/* Feedback text */
 .feedback-text {
   font-size: 1rem;
-  color: #333;
+  color: #1f2937;
   white-space: normal;
   font-style: normal;
+  margin-bottom: 15px;
 }
 
+/* Author styling */
 .feedback-author {
   font-size: 0.95rem;
   color: #00348f;
-  font-weight: 500;
-  margin-top: 15px;
+  font-weight: 600;
   text-align: right;
 }
 
-/* Slower, smoother scroll for long text */
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+/* ---------- Navigation arrows ---------- */
+.feedback-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 52, 143, 0.9);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 5;
+  transition: background-color 0.3s ease;
 }
 
-/* Pause scrolling when hovering */
-.feedback-track:hover {
-  animation-play-state: paused;
+.feedback-nav:hover {
+  background-color: #002b74;
 }
 
-/* Responsive design */
+.feedback-nav.left {
+  left: 10px;
+}
+
+.feedback-nav.right {
+  right: 10px;
+}
+
+/* ---------- Responsive Design ---------- */
 @media (max-width: 768px) {
   .feedback-card {
     flex: 0 0 300px;
     padding: 20px;
+  }
+
+  .feedback-title {
+    font-size: 1.6rem;
   }
 }
 
